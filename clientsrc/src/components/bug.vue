@@ -1,6 +1,6 @@
 <template>
     <div class="bug col-12">
-         <router-link @click="setActiveBug(bugs._id)" :to="{name: 'Bug', params: {bugId: bugs._id}}">
+         <router-link @click="setActiveBug(bugs._id)" :to="{name: 'Bug', params: {bugId: bugData._id}}">
 
         <span class="">{{bugData.title}} </span>
         <!-- <span class="col-3">{{bugData.description}}</span> -->

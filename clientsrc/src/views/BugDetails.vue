@@ -1,6 +1,7 @@
 <template>
     <div class="BugDetails">
-        <h1>{{bugData.title}}</h1>
+        <h1>TItle here :)</h1>
+        <h1>{{Bug.title}}</h1>
 
     </div>
 </template>
@@ -9,7 +10,7 @@
 <script>
 export default {
     name: 'Bug',
-    props:["bugData"],
+    // props:["bugData"],
     data(){
         return {}
     },
@@ -17,12 +18,12 @@ export default {
         this.$store.dispatch('setActiveBug', this.$route.params.bugId)
     },
     computed:{
-        bug(){
+        Bug(){
             return this.$store.state.activeBug
         }
     },
     methods:{},
-    props: ["bugId"],
+    // props: ["bugId"],
     components:{}
 }
 </script>
