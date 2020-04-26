@@ -20,6 +20,7 @@ export default new Vuex.Store({
     profile: {},
     bugs: [],
     activeBug: {},
+    comments: [],
   },
   mutations: {
     setProfile(state, profile) {
@@ -75,7 +76,18 @@ export default new Vuex.Store({
         commit('setActiveBug', res.data)
         console.log("setting active bug", res.data)
       } catch (error) {
-        
+        console.error(error)
+      }
+    },
+    //#endregion
+    //#region -- COMMENTS --
+    async addComment({commit, dispatch}, commentData){
+      try {
+        console.log("adding comment", commentData )
+        await api.post("comments", commentData)
+        // dispatch('getComments')
+      } catch (error) {
+        console.error(error)
       }
     }
     //#endregion
