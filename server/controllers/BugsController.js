@@ -17,7 +17,8 @@ export class BugsController extends BaseController {
     }
     async getAll(req, res, next) {
         try {
-            return res.send(["value1", "value2"]);
+            let data = await bugsService.getAll()
+            return res.send(data)
         } catch (error) {
             next(error);
         }
@@ -25,7 +26,7 @@ export class BugsController extends BaseController {
     async create(req, res, next) {
         try {
             // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID
-            req.body.creator = req.user.email;
+            req.body.creatorEmail = req.userInfo.email;
             let data = await bugsService.create(req.body)
             res.send(req.body);
         } catch (error) {

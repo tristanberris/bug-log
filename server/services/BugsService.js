@@ -2,12 +2,12 @@ import { dbContext } from "../db/DbContext";
 import { BadRequest } from "../utils/Errors";
 
 class BugsService {
-  async findAll(query = {}) {
-    let bugs = await dbContext.Bugs.find(query).populate(
+  async getAll() {
+    let bugs = await dbContext.Bugs.find().populate(
       "creator",
       "name picture"
     );
-    return values;
+    return bugs;
   }
   async findById(id) {
     let value = await dbContext.Bugs.findById(id);
@@ -16,9 +16,9 @@ class BugsService {
     }
     return value;
   }
-  async getAll(query = {}){
-    let bug = await dbContext.Bugs.find(query)
-  }
+  // async getAll(userEmail){
+  //   return await dbContext.Bugs.find({creatorEmail: userEmail}).populate("creator")
+  // }
   async getById(id){
       let bug = await dbContext.Bugs.findById(id)
       return bug
