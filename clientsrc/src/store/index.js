@@ -56,7 +56,7 @@ export default new Vuex.Store({
     //#region -- BUGS --
     async createBug({commit, dispatch}, bugData){
       try {
-        console.log("adding bug", bugData)
+        // console.log("adding bug", bugData)
         let res = await api.post('bugs', bugData)
         dispatch('getBugs')
         
@@ -70,7 +70,7 @@ export default new Vuex.Store({
         api.get('bugs')
         .then(res => {
           commit('setBugs', res.data)
-          console.log(res.data)
+          // console.log(res.data)
         })
       } catch (error) {
         console.error(error)
@@ -80,7 +80,7 @@ export default new Vuex.Store({
       try {
         let res = await api.get( `bugs/${bugsId}`)
         commit('setActiveBug', res.data)
-        console.log("setting active bug", res.data)
+        // console.log("setting active bug", res.data)
       } catch (error) {
         console.error(error)
       }
@@ -93,13 +93,22 @@ export default new Vuex.Store({
         console.error(error)
       }
     },
+    async editBug({commit, dispatch}, newBug){
+      try {
+        console.log(newBug)
+        
+        await api.put('bugs/' + newBug.id, newBug)
+      } catch (error) {
+        console.error(error)
+      }
+    },
     //#endregion
     //#region -- COMMENTS --
     async addComment({commit, dispatch}, commentData){
       try {
         // console.log("adding comment", commentData )
         await api.post("comments", commentData)
-        dispatch('getComments', commentData._id)
+        dispatch('getComments', commentData.bugId)
       } catch (error) {
         console.error(error)
       }

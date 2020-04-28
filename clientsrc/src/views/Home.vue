@@ -8,7 +8,7 @@
       <!-- <router-link @click="setActiveBug(bugs._id)" :to="{name: 'Bug', params: {bugId: bugs._id}}">
 
       </router-link> -->
-      <bug v-if="" v-for="bug in bugs" :bugData="bug" :key="bug._id"></bug> 
+      <bug  v-for="bug in bugs" :bugData="bug" :key="bug._id"></bug> 
       <!-- <bug v-if="!sorted" v-for="bug in sortedBugs" :bugData="bug" :key="bug._id"></bug>  -->
       
     </div>

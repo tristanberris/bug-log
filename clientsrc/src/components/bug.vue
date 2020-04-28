@@ -5,8 +5,8 @@
         <span class="">{{bugData.title}} </span>
         <!-- <span class="col-3">{{bugData.description}}</span> -->
         <span class="col-3">{{bugData.creator.name}}</span>
-        <span v-if="bugData.closed == false" class="col-3">Open</span>
-        <span v-else class="col-3">Closed</span>
+        <span v-if="bugData.closed == false" class="col-3 text-green">Open</span>
+        <span v-else class="col-3 text-red">Closed</span>
         <span class="col-3"> {{bugData.updatedAt}} </span>
         <!-- <span class="col-3">{{bugData.createdAt}}</span>
         <span class="col-3">{{bugData.createdAt}}</span> -->
@@ -44,5 +44,11 @@ export default {
 <style scoped>
 .bug{
     border: 1px solid black;
+}
+.text-red{
+    color: red;
+}
+.text-green{
+    color: rgb(24, 211, 24);
 }
 </style>

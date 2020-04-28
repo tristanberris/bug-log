@@ -44,6 +44,9 @@ class BugsService {
     }
     return data
   }
+  async editBug(id, body){
+    let data = await dbContext.Bugs.findByIdAndUpdate({id: body.id}, body.description, {new: true})
+  }
 }
 
 export const bugsService = new BugsService();

@@ -12,6 +12,7 @@ export class BugsController extends BaseController {
             .get("", this.getAll)
             .get("/:id", this.getById)
             .put("/:id", this.changeBugStatus)
+            .put("/:id", this.editBug)
             .delete("/:id", this.deleteBug)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
             .use(auth0Provider.getAuthorizedUserInfo)
@@ -63,6 +64,13 @@ export class BugsController extends BaseController {
         try {
             await bugsService.deleteBug(req.params.id)
            
+        } catch (error) {
+            next(error)
+        }
+    }
+    async editBug(req, res, next){
+        try {
+            await bugsService.editBug(req.params.id, req.body)
         } catch (error) {
             next(error)
         }

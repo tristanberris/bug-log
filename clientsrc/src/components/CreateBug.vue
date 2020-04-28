@@ -43,10 +43,14 @@ export default {
     
     data(){
         return {
-            bugData: {}
+            bugData: {bugId : this.$route.params.bugId}
         };
     },
-    computed:{},
+    computed:{
+      // activeBugId(){
+      //   return this.$store.state.activeBug.id
+      // }
+    },
     methods:{
          createBug(){
            this.$store.dispatch("createBug", this.bugData);
