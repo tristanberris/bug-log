@@ -31,10 +31,10 @@ class BugsService {
       let data = await dbContext.Bugs.create(rawData)
       return data
   }
-  async deleteBug(id, userEmail){
-      let bug = await dbContext.Bugs.findByIdAndUpdate
-      return bug
-  }
+  // async deleteBug(id, userEmail){
+  //     let bug = await dbContext.Bugs.findByIdAndUpdate
+  //     return bug
+  // }
 //TODO: figure out how to change bug. Kanban is a weird reference.
 //TODO: User validation. Need to use findOneAndUpdate
   async changeBugStatus(id, bugStatus  ){
@@ -45,7 +45,8 @@ class BugsService {
     return data
   }
   async editBug(id, body){
-    let data = await dbContext.Bugs.findByIdAndUpdate({id: body.id}, body.description, {new: true})
+    let data = await dbContext.Bugs.findByIdAndUpdate({_id: id, closed : false}, {description : body},  {new: true})
+    return data
   }
 }
 

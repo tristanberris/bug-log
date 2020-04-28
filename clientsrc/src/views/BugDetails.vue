@@ -4,7 +4,7 @@
     <h1>{{Bug.title}}</h1>
     <h5>Reported by: {{Bug.creatorEmail}}</h5>
     <h4>{{Bug.description}}</h4>
-    <form @submit.prevent="editBug()">
+    <form v-if="Bug.closed == false" @submit.prevent="editBug()">
       <div class="form-group">
         <div class="input-group mb-3">
           <div class="input-group-prepend">

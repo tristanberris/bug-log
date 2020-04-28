@@ -11,9 +11,9 @@ export class BugsController extends BaseController {
             .get("/:id/comments", this.getComments)
             .get("", this.getAll)
             .get("/:id", this.getById)
-            .put("/:id", this.changeBugStatus)
+            .delete("/:id", this.changeBugStatus)
             .put("/:id", this.editBug)
-            .delete("/:id", this.deleteBug)
+            // .delete("/:id", this.deleteBug)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
             .use(auth0Provider.getAuthorizedUserInfo)
             .post("", this.create);
@@ -60,17 +60,17 @@ export class BugsController extends BaseController {
             next(error)
         }
     }
-    async deleteBug(req,res,next){
-        try {
-            await bugsService.deleteBug(req.params.id)
+    // async deleteBug(req,res,next){
+    //     try {
+    //         await bugsService.deleteBug(req.params.id)
            
-        } catch (error) {
-            next(error)
-        }
-    }
+    //     } catch (error) {
+    //         next(error)
+    //     }
+    // }
     async editBug(req, res, next){
         try {
-            await bugsService.editBug(req.params.id, req.body)
+            await bugsService.editBug(req.params.id, req.body.description)
         } catch (error) {
             next(error)
         }

@@ -88,7 +88,7 @@ export default new Vuex.Store({
     async changeStatus({commit, dispatch}, bug){
       try {
         bug.closed = !bug.closed
-        await api.put('bugs/' + bug.id, bug)  
+        await api.delete('bugs/' + bug.id, bug)  
       } catch (error) {
         console.error(error)
       }
