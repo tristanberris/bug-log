@@ -7,6 +7,7 @@
         <span class="col-3">{{bugData.creator.name}}</span>
         <span v-if="bugData.closed == false" class="col-3">Open</span>
         <span v-else class="col-3">Closed</span>
+        <span class="col-3"> {{bugData.updatedAt}} </span>
         <!-- <span class="col-3">{{bugData.createdAt}}</span>
         <span class="col-3">{{bugData.createdAt}}</span> -->
       </router-link>
@@ -23,9 +24,9 @@ export default {
         return {}
     },
     computed:{
-        bugs(){
-            return this.$store.state.bugs
-        }
+        // bugs(){
+        //     return this.$store.state.bugs
+        // }
     },
     // props: ["bugId"],
     methods:{

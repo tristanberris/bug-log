@@ -8,7 +8,8 @@
       <!-- <router-link @click="setActiveBug(bugs._id)" :to="{name: 'Bug', params: {bugId: bugs._id}}">
 
       </router-link> -->
-      <bug v-for="bug in bugs" :bugData="bug" :key="bug._id"></bug> 
+      <bug v-if="" v-for="bug in bugs" :bugData="bug" :key="bug._id"></bug> 
+      <!-- <bug v-if="!sorted" v-for="bug in sortedBugs" :bugData="bug" :key="bug._id"></bug>  -->
       
     </div>
     <!-- <Bug></Bug> -->
@@ -20,26 +21,36 @@ import Bug from "../components/bug"
 import CreateBug from "../components/CreateBug"
 export default {
   name: 'bugs',
+  sorted: false,
   mounted(){
     this.$store.dispatch("getBugs")
   },
   data(){
-    return {};
+    return {
+      
+    };
   },
   computed:{
     bugs(){
       return this.$store.state.bugs
+    },
+    sortedBugs(){
+      return this.$store.state.bugs.closed.sort(
+        (a, b) => a.make.charCodeAt(0) - b.make.charCodeAt(0)
+      );
     },
     created(){
           this.$store.dispatch("getBugs")
 
     }
   },
-  methods:{},
+  methods:{
+    
+  },
  
  components:{
    Bug,
-   CreateBug
+   CreateBug,
  }
 };
 

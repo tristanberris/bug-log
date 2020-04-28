@@ -4,6 +4,7 @@
           <div class="form-group">
             <div class="input-group">
               <div class="input-group-prepend">
+                
                 <button class="btn btn-outline-secondary" type="submit">Create Bug</button>
               </div>
               
@@ -38,6 +39,7 @@
 <script>
 export default {
     name: "create-bug",
+    // props: ["bugData"],
     
     data(){
         return {
@@ -52,7 +54,6 @@ export default {
         }
     },
     components:{
-        
     }
 }
 </script>

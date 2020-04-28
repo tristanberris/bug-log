@@ -7,7 +7,7 @@ export class CommentController extends BaseController {
     constructor() {
         super("api/comments");
         this.router
-            .get("", this.getAll)
+            .get("/:id/comments", this.getAll)
             .delete("/:id", this.delete)
             // NOTE: Beyond this point all routes require Authorization tokens (the user must be logged in)
             .use(auth0Provider.getAuthorizedUserInfo)
@@ -15,11 +15,14 @@ export class CommentController extends BaseController {
     }
     async getAll(req, res, next) {
         try {
-            return res.send(["value1", "value2"]);
+            let data = await commentService.find({bugId: req.params.id})
+            // let data = await commentService.findAll()
+            return res.send(data)
         } catch (error) {
             next(error);
         }
     }
+
     async create(req, res, next) {
         try {
             // NOTE NEVER TRUST THE CLIENT TO ADD THE CREATOR ID

@@ -28,9 +28,14 @@ export default {
             newComment: {}
         }
     },
-    computed:{},
+    computed:{
+        bug(){
+            return this.$store.state.activeBug
+        }
+    },
     methods:{
         addComment(){
+            this.newComment.bug = this.bug.id
             console.log("adding comment from vue", this.newComment)
             this.$store.dispatch("addComment", this.newComment)
             this.newComment = {}

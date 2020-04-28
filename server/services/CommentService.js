@@ -16,6 +16,16 @@ class CommentService {
     }
     return comment;
   }
+  async getComments(id){
+    let comments = await dbContext.Comments.find({bug : id})
+    return comments
+  }
+  async find(id){
+    let comments = await dbContext.Comments.find({bugId : id})
+    if(!comments){
+      throw new BadRequest("No Comments Found")
+    }
+  }
   async delete(id){
       let data = await dbContext.Comments.findOneAndRemove({ _id : id})
       return data
